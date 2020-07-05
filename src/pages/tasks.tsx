@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchTasks } from '../api/task';
 import { Task } from '../models/task';
 
-const Tasks: React.FC = () => {
+export const Tasks: React.FC = () => {
     const [taskList, setTaskList] = useState<Task[] | undefined>(undefined);
 
     const fetchTasksReq = async () => {
