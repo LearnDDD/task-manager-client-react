@@ -12,6 +12,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
+import RegisterTasks from "./registerTasks";
+import {Link, BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 export const Tasks: React.FC = () => {
     const [taskList, setTaskList] = useState<Task[] | undefined>([]);
@@ -43,14 +45,6 @@ export const Tasks: React.FC = () => {
     const classes = useStyles();
     return (
         <>
-            <h1>Task List</h1>
-            {
-                taskList && taskList.map((task) => {
-                    return (
-                        <p key={task.id}>{`${task.title} ${task.details}`}</p>
-                    );
-                })
-            }
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
@@ -73,7 +67,10 @@ export const Tasks: React.FC = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Button className={classes.button}>test</Button>
+            <Button className={classes.button}>新規作成</Button>
+
+
+            <Link to="/register">登録画面</Link>
         </>
     );
 };

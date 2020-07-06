@@ -3,3 +3,8 @@ export interface Task {
     title: string;
     details: string;
 }
+
+export interface ComposingTask {
+    title: string;
+    details: string;
+}
