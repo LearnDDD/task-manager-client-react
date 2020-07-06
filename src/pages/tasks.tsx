@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { AxiosPromise, AxiosResponse } from 'axios';
 
-import { fetchTasks } from '../api/task';
+import { TaskListResponse, fetchTasks } from '../api/task';
 import { Task } from '../models/task';
 
 export const Tasks: React.FC = () => {
-    const [taskList, setTaskList] = useState<Task[] | undefined>(undefined);
+    const [taskList, setTaskList] = useState<Task[] | undefined>([]);
 
     const fetchTasksReq = async () => {
         try {
-            const { data } = await fetchTasks();
-            return data;
+            const response: AxiosResponse<TaskListResponse> = await fetchTasks();
+            const data: TaskListResponse = response.data;
+            return data.tasks;
         } catch (e) {
             console.log(e);
         }
@@ -17,9 +19,7 @@ export const Tasks: React.FC = () => {
 
     useEffect(() => {
         const data = fetchTasksReq();
-        data.then(tasks => {
-            setTaskList(tasks);
-        });
+        data.then(setTaskList);
     }, []);
 
     return (
