@@ -44,7 +44,7 @@ export const Tasks: React.FC = () => {
 
     const classes = useStyles();
     return (
-        <>
+        <div>
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
@@ -70,8 +70,9 @@ export const Tasks: React.FC = () => {
             <Button className={classes.button}>新規作成</Button>
 
 
-            <Link to="/register">登録画面</Link>
-        </>
+            <Link to="/tasks/register">登録画面</Link>
+
+        </div>
     );
 };
 
